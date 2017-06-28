@@ -56,4 +56,10 @@ function init(){
         vid.style.left = (parseInt(vid.style.left,10) - 5) + 'px';
         console.log(vid.style.left);
     });
+    slide.addEventListener('input', function(){
+        vid.currentTime = vid.duration * (slide.value / 100);
+    });
+    vid.addEventListener('timeupdate', function(){
+        slide.value = ((vid.currentTime) / vid.duration) * 100;
+    });
 }
