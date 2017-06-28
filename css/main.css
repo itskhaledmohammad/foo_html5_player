@@ -1,0 +1,18 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+header{
+   height: 400px;
+   width: 500px;
+   overflow: hidden;
+   position:relative;
+}
+#vid{
+    position: absolute;
+    top:0;
+    left: 0;
+}
+#slide{
+    width: 500px;
+}
