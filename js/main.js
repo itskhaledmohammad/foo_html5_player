@@ -17,6 +17,7 @@ function init(){
     var next = document.querySelector('#next');
     var prev = document.querySelector('#prev');
     var loadStatus = document.querySelector('#loadStatus');
+    var loopOrNot = document.querySelector('#loopOrNot');
     var zoom = 1;
     var bufferpos = 0;
     var playlist = ["https://vt.media.tumblr.com/tumblr_os685vybSY1vt68ub_480.mp4",
@@ -28,6 +29,7 @@ function init(){
     vid.volume = 0;
 
     vid.addEventListener('progress', function(){
+        console.log(bufferpos);
         loadStatus.innerText = "Load Status: " + parseInt(((vid.buffered.end(bufferpos) / vid.duration)* 100)) + "%";
     }, false);
     vid.addEventListener('loadeddata', function(){
@@ -98,4 +100,7 @@ function init(){
         bufferpos = 0;
     });
 
+    loopOrNot.addEventListener('click', function(){
+        vid.loop = (loopOrNot.checked == true) ? true : false;
+    }, false);
 }
