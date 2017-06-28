@@ -1,0 +1,107 @@
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+        <meta charset="utf-8">
+        <title>Video Player</title>
+        <style>
+         *{
+             padding: 0;
+             margin: 0;
+         }
+         header{
+            height: 400px;
+            width: 500px;
+            overflow: hidden;
+            position:relative;
+         }
+         #vid{
+             position: absolute;
+             top:0;
+             left: 0;
+         }
+         #slide{
+             width: 500px;
+         }
+        </style>
+        <script type="text/javascript">
+            function init(){
+                var btnZoomIn = document.querySelector('#zoomIn');
+                var btnZoomOut = document.querySelector('#zoomOut');
+                var btnPlay = document.querySelector("#play");
+                var btnPause = document.querySelector('#pause');
+                var btnRewind = document.querySelector('#rewind');
+                var btnLeft = document.querySelector('#left');
+                var btnRight = document.querySelector('#right');
+                var btnUp = document.querySelector('#up');
+                var btnDown = document.querySelector('#down');
+                var vid = document.querySelector('#vid');
+                var slide = document.querySelector('#slide');
+                var zoom = 1;
+
+                vid.style.left = 0;
+                vid.style.top = 0;
+
+                btnPlay.addEventListener('click', function(){
+                    vid.play();
+                });
+
+                btnPause.addEventListener('click', function(){
+                    vid.pause();
+                });
+
+                btnRewind.addEventListener('click', function(){
+                    vid.currentTime = 0;
+                });
+
+                btnZoomIn.addEventListener('click', function(){
+                    zoom = zoom + 0.2;
+                    vid.style['transform'] = 'scale('+zoom+')';
+                    console.log('Zoom: ' + zoom);
+                });
+                btnZoomOut.addEventListener('click', function(){
+                    zoom = zoom - 0.2;
+                    vid.style['transform'] = 'scale('+zoom+')';
+                    console.log('Zoom: ' + zoom);
+                });
+                btnUp.addEventListener('click', function(){
+                    vid.style.top = (parseInt(vid.style.top,10) + 5) + 'px';
+                    console.log(vid.style.top);
+                });
+
+                btnDown.addEventListener('click', function(){
+                    vid.style.top = (parseInt(vid.style.top,10) - 5) + 'px';
+                    console.log(vid.style.top);
+                });
+
+                btnLeft.addEventListener('click', function(){
+                    vid.style.left = (parseInt(vid.style.left,10) + 5) + 'px';
+                    console.log(vid.style.left);
+                });
+
+                btnRight.addEventListener('click', function(){
+                    vid.style.left = (parseInt(vid.style.left,10) - 5) + 'px';
+                    console.log(vid.style.left);
+                });
+            }
+        </script>
+    </head>
+    <body onload="init();">
+        <header>
+            <video id ="vid" height="500" width="400" controls autoplay loop preload="auto" poster="http://img.youtube.com/vi/GO_hv-YFGXE/maxresdefault.jpg">
+                <source src="https://vt.media.tumblr.com/tumblr_os685vybSY1vt68ub_480.mp4" type="video/mp4" />
+            </video>
+        </header>
+        <p><strong>Time: 0.0</strong></p>
+        <input type="range" id="slide" value="0">
+        <br/>
+        <button id="left">Left</button>
+        <button id="right">Right</button>
+        <button id="up">Up</button>
+        <button id="down">Down</button>
+        <button id="zoomIn">+</button>
+        <button id="zoomOut">-</button>
+        <button id="play">Play</button>
+        <button id="pause">Pause</button>
+        <button id="rewind">Rewind Back</button>
+    </body>
+</html>
