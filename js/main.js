@@ -10,11 +10,16 @@ function init(){
     var btnDown = document.querySelector('#down');
     var vid = document.querySelector('#vid');
     var slide = document.querySelector('#slide');
+    var vol = document.querySelector('#vol');
+    var currVol = document.querySelector('#currVol');
+    var durationTime = document.querySelector('#duration');
     var zoom = 1;
+    var volumne = 0;
 
     vid.style.left = 0;
     vid.style.top = 0;
 
+    durationTime.innerText = "Time: " + parseInt((vid.duration) / 60) + " : " + parseInt((vid.duration) - (60 * parseInt((vid.duration) / 60)));
     btnPlay.addEventListener('click', function(){
         vid.play();
     });
@@ -61,5 +66,10 @@ function init(){
     });
     vid.addEventListener('timeupdate', function(){
         slide.value = ((vid.currentTime) / vid.duration) * 100;
+    });
+
+    vol.addEventListener('input', function(){
+        vid.volume = vol.value / 100;
+        currVol.innerText = "Current Volume: " + parseInt(vid.volume * 100);
     });
 }
