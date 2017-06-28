@@ -13,13 +13,20 @@ function init(){
     var vol = document.querySelector('#vol');
     var currVol = document.querySelector('#currVol');
     var durationTime = document.querySelector('#duration');
+    var currTime = document.querySelector('#currTime');
+    var next = document.querySelector('#next');
+    var prev = document.querySelector('#prev');
     var zoom = 1;
-    var volumne = 0;
-
+    var playlist = ["https://vt.media.tumblr.com/tumblr_os685vybSY1vt68ub_480.mp4",
+                "https://vt.media.tumblr.com/tumblr_os96woC8tI1tk7ffb_480.mp4"];
+    var currentItem = 0;
     vid.style.left = 0;
     vid.style.top = 0;
-
-    durationTime.innerText = "Time: " + parseInt((vid.duration) / 60) + " : " + parseInt((vid.duration) - (60 * parseInt((vid.duration) / 60)));
+    vid.src = playlist[1];
+    vid.volume = 0;
+    vid.addEventListener('loadeddata', function(){
+        durationTime.innerText = "Time: " + parseInt((vid.duration) / 60) + " : " + parseInt((vid.duration) - (60 * parseInt((vid.duration) / 60)));
+    });
     btnPlay.addEventListener('click', function(){
         vid.play();
     });
@@ -65,6 +72,7 @@ function init(){
         vid.currentTime = vid.duration * (slide.value / 100);
     });
     vid.addEventListener('timeupdate', function(){
+        currTime.innerText = "Current Time: " + parseInt((vid.currentTime) / 60) + " : " + parseInt((vid.currentTime) - (60 * parseInt((vid.currentTime) / 60)));
         slide.value = ((vid.currentTime) / vid.duration) * 100;
     });
 
@@ -72,4 +80,13 @@ function init(){
         vid.volume = vol.value / 100;
         currVol.innerText = "Current Volume: " + parseInt(vid.volume * 100);
     });
+    next.addEventListener('click', function(){
+        currentItem++;
+        vid.src = playlist[currentItem % playlist.length];
+    });
+    prev.addEventListener('click', function(){
+        currentItem--;
+        vid.src = playlist[currentItem % playlist.length];
+    });
+
 }

@@ -7,11 +7,12 @@
     </head>
     <body onload="init();">
         <header>
-            <video id ="vid"  height="500" width="400" controls autoplay loop preload="auto" poster="http://img.youtube.com/vi/GO_hv-YFGXE/maxresdefault.jpg">
+            <video id ="vid" height="500" width="400" autoplay loop preload="auto" poster="http://img.youtube.com/vi/GO_hv-YFGXE/maxresdefault.jpg">
                 <source src="https://vt.media.tumblr.com/tumblr_os685vybSY1vt68ub_480.mp4" type="video/mp4" />
             </video>
         </header>
         <p id="duration"><strong>Time: 0.0</strong></p>
+        <p id="currTime"><strong>Current Time: 0.0</strong></p>
         <input type="range" id="slide" value="0">
         <br/>
         <button id="left">Left</button>
@@ -23,6 +24,8 @@
         <button id="play">Play</button>
         <button id="pause">Pause</button>
         <button id="rewind">Rewind Back</button>
+        <button id="prev">Previous Video</button>
+        <button id="next">Next Video</button>
         <p id="currVol">Current Volume: 0</p>
         <input type="range" id="vol" value="0">
     </body>
