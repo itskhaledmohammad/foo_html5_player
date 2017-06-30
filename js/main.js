@@ -25,7 +25,7 @@ function init(){
     var currentItem = 0;
     vid.style.left = 0;
     vid.style.top = 0;
-    vid.src = playlist[1];
+    vid.src = playlist[0];
     vid.volume = 0;
 
     vid.addEventListener('progress', function(){
@@ -89,6 +89,7 @@ function init(){
     });
     next.addEventListener('click', function(){
         currentItem++;
+        console.log(currentItem);
         vid.src = playlist[currentItem % playlist.length];
         bufferpos  = 0;
     });
@@ -102,7 +103,7 @@ function init(){
         vid.loop = (loopOrNot.checked == true) ? true : false;
     }, false);
     vid.addEventListener('ended', function(){
-        if(loopOrNot.checked == false){
+        if(!loopOrNot.checked){
             currentItem++;
             vid.src = playlist[currentItem % playlist.length];
             bufferpos  = 0;
