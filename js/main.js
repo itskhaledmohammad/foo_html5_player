@@ -40,7 +40,9 @@ function init(){
     var loadStatus = document.querySelector('#loadStatus');
     var loopOrNot = document.querySelector('#loopOrNot');
     var waitTillFull = document.querySelector('#waitTillFull');
+    var zoomControls = document.querySelector('#zoomControls');
     var resetZoom = document.querySelector('#resetZoom');
+    var zoomPanelSwitch = document.querySelector('#zoomPanelSwitch');
 
     // Variables
     var zoom = 1;
@@ -92,6 +94,16 @@ function init(){
     // Rewind to Start.
     btnRewind.addEventListener('click', function(){
         vid.currentTime = 0;
+    });
+
+    // Open or close Zoom Panel.
+    zoomPanelSwitch.addEventListener('click', function(){
+        var zoomControlsDisp = zoomControls.style;
+        if(zoomControlsDisp.display === 'none'){
+            zoomControlsDisp.display = 'flex';
+        }else{
+            zoomControlsDisp.display = 'none';
+        }
     });
 
     // Zoom In.

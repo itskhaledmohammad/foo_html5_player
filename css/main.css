@@ -48,7 +48,7 @@ header{
 }
 #zoomControls{
     justify-content: center;
-    display: flex;
+    display: none;
     flex-direction: row;
     flex-wrap: wrap;
     width: 35px;
