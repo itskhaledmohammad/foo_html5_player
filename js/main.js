@@ -117,12 +117,12 @@ function init(){
 
     // Move Left.
     btnLeft.addEventListener('click', function(){
-        vid.style.left = (parseInt(vid.style.left,10) + moveRate) + 'px';
+        vid.style.left = (parseInt(vid.style.left,10) - moveRate) + 'px';
     });
 
     // Move Right.
     btnRight.addEventListener('click', function(){
-        vid.style.left = (parseInt(vid.style.left,10) - moveRate) + 'px';
+        vid.style.left = (parseInt(vid.style.left,10) + moveRate) + 'px';
     });
 
     // Seek.
