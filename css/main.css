@@ -54,3 +54,7 @@ header{
     width: 35px;
     align-items: ;
 }
+#volumeControls{
+    display: flex;
+    
+}

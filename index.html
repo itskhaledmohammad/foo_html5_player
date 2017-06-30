@@ -13,7 +13,7 @@
                 </video>
             </header>
             <section id="controls">
-                <p id="loadStatus">Load Status: 0%</p>
+                <!---<p id="loadStatus">Load Status: 0%</p>!-->
                 <p id="duration"><strong>Time: 0.0</strong></p>
                 <p id="currTime"><strong>Current Time: 0.0</strong></p>
                 <input type="range" id="slide" value="0">
@@ -37,9 +37,11 @@
                 <button id="rewind">Rewind Back</button>
                 <button id="prev">Previous Video</button>
                 <button id="next">Next Video</button>
-                <p id="currVol">Current Volume: 0</p>
-                <input type="range" id="vol" value="0">
-                <br>
+                <div id="volumeControls">
+                    <p>🔊</p>
+                    <input type="range" id="vol" value="0">
+                    <p id="currVol">0%</p>
+                </div>
                 <label>Loop: </label>
                 <input type="checkbox" id="loopOrNot" checked>
             </section>

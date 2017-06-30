@@ -151,10 +151,10 @@ function init(){
         vid.currentTime = vid.duration * (slide.value / 100);
     });
 
-    // Update the Current Time.
+    // Update the Volume.
     vol.addEventListener('input', function(){
         vid.volume = vol.value / 100;
-        currVol.innerText = "Current Volume: " + parseInt(vid.volume * 100);
+        currVol.innerText = parseInt(vid.volume * 100) + "%";
     });
 
     // Next Video.
