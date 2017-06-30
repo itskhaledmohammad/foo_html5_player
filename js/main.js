@@ -48,8 +48,8 @@ function init(){
     var currentItem = 0;
 
     // Playlist
-    var playlist = ["https://vt.media.tumblr.com/tumblr_os685vybSY1vt68ub_480.mp4",
-                "https://vt.media.tumblr.com/tumblr_os96woC8tI1tk7ffb_480.mp4"];
+    var playlist = ["https://vt.media.tumblr.com/tumblr_osck2jVczm1uz56c3.mp4",
+                "https://vt.media.tumblr.com/tumblr_o2glssowzR1usg3as.mp4"];
 
     // Initial Actions.
     vid.style.left = 0;
