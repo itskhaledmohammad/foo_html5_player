@@ -40,6 +40,7 @@ function init(){
     var loadStatus = document.querySelector('#loadStatus');
     var loopOrNot = document.querySelector('#loopOrNot');
     var waitTillFull = document.querySelector('#waitTillFull');
+    var resetZoom = document.querySelector('#resetZoom');
 
     // Variables
     var zoom = 1;
@@ -123,6 +124,14 @@ function init(){
     // Move Right.
     btnRight.addEventListener('click', function(){
         vid.style.left = (parseInt(vid.style.left,10) + moveRate) + 'px';
+    });
+
+    // Reset Zoom
+    resetZoom.addEventListener('click', function(){
+        vid.style.top = 0 + 'px';
+        vid.style.left = 0 + 'px';
+        zoom = 1;
+        vid.style['transform'] = 'scale('+zoom+')';
     });
 
     // Seek.
