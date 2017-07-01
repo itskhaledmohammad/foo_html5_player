@@ -188,7 +188,8 @@ function init(){
 
     // Check box(Loop or Not Loop).
     loopOrNot.addEventListener('click', function(){
-        vid.loop = (loopOrNot.checked == true) ? true : false;
+        vid.loop = (vid.loop == true) ? false : true;
+        document.querySelector('#loopOrNot i').style.color = (vid.loop == true) ? "#8A4F7D" : "white";
     }, false);
 
 }

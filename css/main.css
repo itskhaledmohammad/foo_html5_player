@@ -47,6 +47,9 @@ button i{
     -o-user-select: none;
     user-select: none;
 }
+#loopOrNot i{
+    color: #8A4F7D;
+}
 #wrapper{
     display: flex;
     flex-direction: column;
@@ -55,6 +58,11 @@ button i{
 #leftRight{
     display: flex;
     flex-direction: row;
+}
+#volumeControls{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #zoomMove{
     justify-content: center;
@@ -79,6 +87,23 @@ button i{
 }
 #secLevelControls{
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 8px;
+}
+#playPauseControls{
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+#firstPanel{
+    display: flex;
+    align-items: center;
+}
+#lastPanel{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 /* Range CSS */
@@ -173,7 +198,7 @@ input[type=range].volSlider {
   -webkit-appearance: none;
   width: 100%;
   height: 0;
-  margin: 12px 0;
+  margin: 12px 8px;
 }
 input[type=range].volSlider:focus {
   outline: none;

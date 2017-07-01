@@ -17,35 +17,38 @@
                 <!---<p id="loadStatus">Load Status: 0%</p>!-->
                 <input class="mainSlider" type="range" id="slide" value="0">
                 <div id="secLevelControls">
-                    <button id="zoomPanelSwitch"><i class="material-icons">all_out</i></button>
-                    <div id="zoomControls">
-                        <button id="zoomIn">+</button>
-                        <button id="zoomOut">-</button>
-                        <div id="zoomMove">
-                            <button id="up">▲</button>
-                            <div id="leftRight">
-                                <button id="left">◄</button>
-                                <button id="right">►</button>
-                            </div>
-                            <button id="down">▼</button>
+                    <div id="firstPanel">
+                        <div id="playPauseControls">
+                            <button id="prev"><i class="material-icons">skip_previous</i></button>
+                            <button id="playPause"><i class="material-icons">play_circle_filled</i></button>
+                            <button id="next"><i class="material-icons">skip_next</i></button>
+                            <button id="rewind"><i class="material-icons">replay</i></button>
+                            <button id="loopOrNot"><i class="material-icons">repeat</i></button>
                         </div>
-                        <button id="resetZoom">↻</button>
+                        <div id="volumeControls">
+                            <p id="volShow"><i class="material-icons">volume_off</i></p>
+                            <input class="volSlider" type="range" id="vol" value="0">
+                            <p id="currVol">0%</p>
+                        </div>
                     </div>
-                    <button id="prev"><i class="material-icons">skip_previous</i></button>
-                    <button id="playPause"><i class="material-icons">play_circle_filled</i></button>
-                    <button id="next"><i class="material-icons">skip_next</i></button>
-                    <button id="rewind"><i class="material-icons">replay</i></button>
-                    <div id="volumeControls">
-                        <p id="volShow"><i class="material-icons">volume_off</i></p>
-                        <input class="volSlider" type="range" id="vol" value="0">
-                        <p id="currVol">0%</p>
+                    <div id="lastPanel">
+                        <button id="zoomPanelSwitch"><i class="material-icons">all_out</i></button>
+                        <div id="zoomControls">
+                            <button id="zoomIn">+</button>
+                            <button id="zoomOut">-</button>
+                            <div id="zoomMove">
+                                <button id="up">▲</button>
+                                <div id="leftRight">
+                                    <button id="left">◄</button>
+                                    <button id="right">►</button>
+                                </div>
+                                <button id="down">▼</button>
+                            </div>
+                            <button id="resetZoom">↻</button>
+                        </div>
+                        <p ><span id="currTime">0.0</span>/<span id="duration">0.0</span></p>
                     </div>
-                    <p ><span id="currTime">0.0</span>/<span id="duration">0.0</span></p>
                 </div>
-                <!---
-                <label>Loop: </label>
-                <input type="checkbox" id="loopOrNot" checked>
-                !-->
             </section>
         </div>
     </body>
