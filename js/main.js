@@ -42,12 +42,14 @@ function init(){
     var zoomControls = document.querySelector('#zoomControls');
     var resetZoom = document.querySelector('#resetZoom');
     var zoomPanelSwitch = document.querySelector('#zoomPanelSwitch');
+    var volShow = document.querySelector('#volShow');
 
     // Variables
     var zoom = 1;
     var zoomRate = 0.2;
     var moveRate = 5;
     var currentItem = 0;
+    var lastVol = 1;
 
     // Playlist
     var playlist = ["https://vt.media.tumblr.com/tumblr_osck2jVczm1uz56c3.mp4",
@@ -59,7 +61,6 @@ function init(){
     vid.src = playlist[0];
     vid.volume = 0;
 
-
     // Video Events.
     vid.addEventListener('progress', function(){
         loadStatus.innerText = "Load Status: " + parseInt(((vid.buffered.end(0) / vid.duration)* 100)) + "%";
@@ -69,7 +70,7 @@ function init(){
     });
     vid.addEventListener('timeupdate', function(){
         currTime.innerText = getTimePassedInHour(vid) + ":" + getTimePassedInMin(vid) + ":" + getTimePassedInSec(vid);
-        slide.value = ((vid.currentTime) / vid.duration) * 100;
+        slide.value = (vid.currentTime === 0) ? 0 : ((vid.currentTime) / vid.duration) * 100;
     });
     vid.addEventListener('ended', function(){
         if(!loopOrNot.checked){
@@ -175,4 +176,18 @@ function init(){
     loopOrNot.addEventListener('click', function(){
         vid.loop = (loopOrNot.checked == true) ? true : false;
     }, false);
+
+    // Mute On/Off.
+    volShow.addEventListener('click', function(){
+        if(vid.volume != 0){
+            lastVol = vid.volume;
+            vid.volume = 0;
+            vol.value = 0;
+        }else{
+            vid.volume = lastVol;
+            vol.value = lastVol * 100;
+        }
+        currVol.innerText = parseInt(vid.volume * 100) + "%";
+        document.querySelector("#volShow i").innerText = (vid.volume === 0) ? "volume_off" : "volume_up";
+    });
 }
