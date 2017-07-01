@@ -17,6 +17,13 @@ function getTimePassedInMin(vid){
 function getTimePassedInSec(vid){
     return parseInt((vid.currentTime) - (60 * parseInt((vid.currentTime) / 60)));
 }
+function calibrate(vid, btnPlay){
+    if(vid.paused){
+        document.querySelector("#playPause i").innerText = "play_circle_filled";
+    }else{
+        document.querySelector("#playPause i").innerText = "pause_circle_filled";
+    }
+}
 
 function init(){
     // Elements.
@@ -60,7 +67,8 @@ function init(){
     vid.style.top = 0;
     vid.src = playlist[0];
     vid.volume = 0;
-
+    document.querySelector("#playPause i").innerText = (vid.autoplay) ?  "pause_circle_filled" : "play_circle_filled";
+    
     // Video Events.
     vid.addEventListener('progress', function(){
         loadStatus.innerText = "Load Status: " + parseInt(((vid.buffered.end(0) / vid.duration)* 100)) + "%";
@@ -83,13 +91,8 @@ function init(){
 
     // Play/Pause Button.
     btnPlay.addEventListener('click', function(){
-        if(vid.paused){
-            document.querySelector("#playPause i").innerText = "pause_circle_filled";
-            vid.play();
-        }else{
-            document.querySelector("#playPause i").innerText = "play_circle_filled";
-            vid.pause();
-        }
+        (vid.paused) ? vid.play() : vid.pause();
+        calibrate(vid, btnPlay);
     });
 
     // Rewind to Start.
@@ -162,14 +165,15 @@ function init(){
     // Next Video.
     next.addEventListener('click', function(){
         currentItem++;
-        console.log(currentItem);
         vid.src = playlist[currentItem % playlist.length];
+        calibrate(vid, btnPlay);
     });
 
     // Previous Video.
     prev.addEventListener('click', function(){
         currentItem--;
         vid.src = playlist[currentItem % playlist.length];
+        calibrate(vid, btnPlay);
     });
 
     // Mute On/Off.
