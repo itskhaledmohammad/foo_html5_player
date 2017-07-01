@@ -50,6 +50,7 @@ function init(){
     var resetZoom = document.querySelector('#resetZoom');
     var zoomPanelSwitch = document.querySelector('#zoomPanelSwitch');
     var volShow = document.querySelector('#volShow');
+    var zoomControlsDisp = zoomControls.style;
 
     // Variables
     var zoom = 1;
@@ -57,6 +58,7 @@ function init(){
     var moveRate = 5;
     var currentItem = 0;
     var lastVol = 1;
+    zoomControlsDisp.display = 'none';
 
     // Playlist
     var playlist = ["https://vt.media.tumblr.com/tumblr_osck2jVczm1uz56c3.mp4",
@@ -103,7 +105,6 @@ function init(){
 
     // Open or close Zoom Panel.
     zoomPanelSwitch.addEventListener('click', function(){
-        var zoomControlsDisp = zoomControls.style;
         if(zoomControlsDisp.display === 'none'){
             zoomControlsDisp.display = 'flex';
         }else{

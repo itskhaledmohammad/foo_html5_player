@@ -76,12 +76,15 @@ button:focus {
     flex-direction: row;
     flex-wrap: wrap;
 }
+#zoomPanelSwitch{
+    margin-right: 10px;
+}
 #zoomControls{
+    margin: 0 10px 0 0;
     justify-content: center;
     display: none;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 35px;
     align-items: ;
 }
 #volumeControls{
