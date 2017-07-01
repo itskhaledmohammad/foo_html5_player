@@ -172,11 +172,6 @@ function init(){
         vid.src = playlist[currentItem % playlist.length];
     });
 
-    // Check box(Loop or Not Loop).
-    loopOrNot.addEventListener('click', function(){
-        vid.loop = (loopOrNot.checked == true) ? true : false;
-    }, false);
-
     // Mute On/Off.
     volShow.addEventListener('click', function(){
         if(vid.volume != 0){
@@ -190,4 +185,10 @@ function init(){
         currVol.innerText = parseInt(vid.volume * 100) + "%";
         document.querySelector("#volShow i").innerText = (vid.volume === 0) ? "volume_off" : "volume_up";
     });
+
+    // Check box(Loop or Not Loop).
+    loopOrNot.addEventListener('click', function(){
+        vid.loop = (loopOrNot.checked == true) ? true : false;
+    }, false);
+
 }
