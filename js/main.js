@@ -22,8 +22,7 @@ function init(){
     // Elements.
     var btnZoomIn = document.querySelector('#zoomIn');
     var btnZoomOut = document.querySelector('#zoomOut');
-    var btnPlay = document.querySelector("#play");
-    var btnPause = document.querySelector('#pause');
+    var btnPlay = document.querySelector("#playPause");
     var btnRewind = document.querySelector('#rewind');
     var btnLeft = document.querySelector('#left');
     var btnRight = document.querySelector('#right');
@@ -66,10 +65,10 @@ function init(){
         loadStatus.innerText = "Load Status: " + parseInt(((vid.buffered.end(0) / vid.duration)* 100)) + "%";
     }, false);
     vid.addEventListener('loadeddata', function(){
-        durationTime.innerText = "Time: " + getTotalTimeInHour(vid) + " : " + getTotalTimeInMin(vid) + " : " + getTotaltimeInSec(vid);
+        durationTime.innerText = getTotalTimeInHour(vid) + ":" + getTotalTimeInMin(vid) + ":" + getTotaltimeInSec(vid);
     });
     vid.addEventListener('timeupdate', function(){
-        currTime.innerText = "Current Time: " + getTimePassedInHour(vid) + " : " + getTimePassedInMin(vid) + " : " + getTimePassedInSec(vid);
+        currTime.innerText = getTimePassedInHour(vid) + ":" + getTimePassedInMin(vid) + ":" + getTimePassedInSec(vid);
         slide.value = ((vid.currentTime) / vid.duration) * 100;
     });
     vid.addEventListener('ended', function(){
@@ -81,14 +80,15 @@ function init(){
     });
 
 
-    // Play Button.
+    // Play/Pause Button.
     btnPlay.addEventListener('click', function(){
-        vid.play();
-    });
-
-    // Pause Button.
-    btnPause.addEventListener('click', function(){
-        vid.pause();
+        if(vid.paused){
+            document.querySelector("#playPause i").innerText = "pause_circle_filled";
+            vid.play();
+        }else{
+            document.querySelector("#playPause i").innerText = "play_circle_filled";
+            vid.pause();
+        }
     });
 
     // Rewind to Start.

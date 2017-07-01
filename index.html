@@ -4,6 +4,7 @@
         <title>Video Player</title>
         <link rel="stylesheet" href="/css/main.css">
         <script type="text/javascript" src="/js/main.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Roboto" rel="stylesheet">
     </head>
     <body onload="init();">
         <div id="wrapper">
@@ -14,36 +15,37 @@
             </header>
             <section id="controls">
                 <!---<p id="loadStatus">Load Status: 0%</p>!-->
-                <p id="duration"><strong>Time: 0.0</strong></p>
-                <p id="currTime"><strong>Current Time: 0.0</strong></p>
-                <input type="range" id="slide" value="0">
-                <br/>
-                <button id="zoomPanelSwitch">Open Zoom</button>
-                <div id="zoomControls">
-                    <button id="zoomIn">+</button>
-                    <button id="zoomOut">-</button>
-                    <div id="zoomMove">
-                        <button id="up">▲</button>
-                        <div id="leftRight">
-                            <button id="left">◄</button>
-                            <button id="right">►</button>
+                <input class="mainSlider" type="range" id="slide" value="0">
+                <div id="secLevelControls">
+                    <button id="zoomPanelSwitch"><i class="material-icons">all_out</i></button>
+                    <div id="zoomControls">
+                        <button id="zoomIn">+</button>
+                        <button id="zoomOut">-</button>
+                        <div id="zoomMove">
+                            <button id="up">▲</button>
+                            <div id="leftRight">
+                                <button id="left">◄</button>
+                                <button id="right">►</button>
+                            </div>
+                            <button id="down">▼</button>
                         </div>
-                        <button id="down">▼</button>
+                        <button id="resetZoom">↻</button>
                     </div>
-                    <button id="resetZoom">↻</button>
+                    <button id="prev"><i class="material-icons">skip_previous</i></button>
+                    <button id="playPause"><i class="material-icons">play_circle_filled</i></button>
+                    <button id="next"><i class="material-icons">skip_next</i></button>
+                    <button id="rewind"><i class="material-icons">replay</i></button>
+                    <div id="volumeControls">
+                        <p>🔊</p>
+                        <input class="volSlider" type="range" id="vol" value="0">
+                        <p id="currVol">0%</p>
+                    </div>
+                    <p ><span id="currTime">0.0</span>/<span id="duration">0.0</span></p>
                 </div>
-                <button id="play">Play</button>
-                <button id="pause">Pause</button>
-                <button id="rewind">Rewind Back</button>
-                <button id="prev">Previous Video</button>
-                <button id="next">Next Video</button>
-                <div id="volumeControls">
-                    <p>🔊</p>
-                    <input type="range" id="vol" value="0">
-                    <p id="currVol">0%</p>
-                </div>
+                <!---
                 <label>Loop: </label>
                 <input type="checkbox" id="loopOrNot" checked>
+                !-->
             </section>
         </div>
     </body>
