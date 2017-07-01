@@ -37,6 +37,10 @@ header{
     color: white;
     position: fixed;
     bottom: 0;
+    opacity: 0.1;
+}
+#controls:hover{
+    opacity: 1;
 }
 button:focus {outline:0;}
 button i{
@@ -85,6 +89,7 @@ button i{
 #slide{
     width: 100%;
 }
+
 #secLevelControls{
     display: flex;
     align-items: center;
