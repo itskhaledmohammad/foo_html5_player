@@ -17,12 +17,12 @@ function getTimePassedInMin(vid){
 function getTimePassedInSec(vid){
     return parseInt((vid.currentTime) - (60 * parseInt((vid.currentTime) / 60)));
 }
-function calibrate(vid, btnPlay){
-    if(vid.paused){
-        document.querySelector("#playPause i").innerText = "play_circle_filled";
-    }else{
-        document.querySelector("#playPause i").innerText = "pause_circle_filled";
-    }
+function calibrate(vid){
+    document.querySelector("#playPause i").innerText = (vid.autoplay) ?  "pause_circle_filled" : "play_circle_filled";
+    document.querySelector('#loopOrNot i').style.color = (vid.loop == true) ? "#8A4F7D" : "white";
+    document.querySelector("#volShow i").innerText = (vid.volume === 0) ? "volume_off" : "volume_up";
+    vol.value = vid.volume * 100;
+    currVol.innerText = parseInt(vid.volume * 100) + "%";
 }
 
 function init(){
@@ -66,9 +66,10 @@ function init(){
     vid.style.left = 0;
     vid.style.top = 0;
     vid.src = playlist[0];
-    vid.volume = 0;
-    document.querySelector("#playPause i").innerText = (vid.autoplay) ?  "pause_circle_filled" : "play_circle_filled";
-    
+    vid.volume = 1;
+    lastVol = (vid.volume === 1) ? 0 : 1;
+    calibrate(vid);
+
     // Video Events.
     vid.addEventListener('progress', function(){
         loadStatus.innerText = "Load Status: " + parseInt(((vid.buffered.end(0) / vid.duration)* 100)) + "%";
@@ -84,15 +85,15 @@ function init(){
         if(!loopOrNot.checked){
             currentItem++;
             vid.src = playlist[currentItem % playlist.length];
-            bufferpos  = 0;
+            calibrate(vid);
         }
     });
 
 
     // Play/Pause Button.
     btnPlay.addEventListener('click', function(){
+        document.querySelector("#playPause i").innerText = (vid.paused) ?  "pause_circle_filled" : "play_circle_filled";
         (vid.paused) ? vid.play() : vid.pause();
-        calibrate(vid, btnPlay);
     });
 
     // Rewind to Start.
@@ -166,14 +167,14 @@ function init(){
     next.addEventListener('click', function(){
         currentItem++;
         vid.src = playlist[currentItem % playlist.length];
-        calibrate(vid, btnPlay);
+        calibrate(vid);
     });
 
     // Previous Video.
     prev.addEventListener('click', function(){
         currentItem--;
         vid.src = playlist[currentItem % playlist.length];
-        calibrate(vid, btnPlay);
+        calibrate(vid);
     });
 
     // Mute On/Off.
@@ -190,7 +191,7 @@ function init(){
         document.querySelector("#volShow i").innerText = (vid.volume === 0) ? "volume_off" : "volume_up";
     });
 
-    // Check box(Loop or Not Loop).
+    // Loop or Not Loop
     loopOrNot.addEventListener('click', function(){
         vid.loop = (vid.loop == true) ? false : true;
         document.querySelector('#loopOrNot i').style.color = (vid.loop == true) ? "#8A4F7D" : "white";
