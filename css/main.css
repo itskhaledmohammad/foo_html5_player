@@ -19,6 +19,7 @@ header{
    position:relative;
    display: flex;
    flex-direction: column;
+   background-color: black;
 }
 #vid{
     height: 100%;
@@ -32,10 +33,19 @@ header{
 }
 #controls{
     width: 100%;
-    background-color: rgba(4, 3, 3, 1);
+    background-color: rgba(4, 3, 3, 0.7);
     color: white;
     position: fixed;
     bottom: 0;
+}
+button:focus {outline:0;}
+button i{
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+    /* Rules below not implemented in browsers yet */
+    -o-user-select: none;
+    user-select: none;
 }
 #wrapper{
     display: flex;
@@ -162,6 +172,7 @@ input[type=range].mainSlider:focus::-ms-fill-upper {
 input[type=range].volSlider {
   -webkit-appearance: none;
   width: 100%;
+  height: 0;
   margin: 12px 0;
 }
 input[type=range].volSlider:focus {

@@ -155,6 +155,7 @@ function init(){
     vol.addEventListener('input', function(){
         vid.volume = vol.value / 100;
         currVol.innerText = parseInt(vid.volume * 100) + "%";
+        document.querySelector("#volShow i").innerText = (vid.volume === 0) ? "volume_off" : "volume_up";
     });
 
     // Next Video.
