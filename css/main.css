@@ -2,6 +2,31 @@
     padding: 0;
     margin: 0;
     font-family: 'Roboto';
+    font-size: 24px;
+}
+.matIcons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 36px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
 }
 #wrapper{
     height: 100%;
@@ -37,11 +62,14 @@ header{
     color: white;
     position: fixed;
     bottom: 0;
+    left: 0;
     opacity: 0.1;
+    transition: all .25s ease-in-out;
 }
 #controls:hover{
     opacity: 1;
-}
+    transition: all .25s ease-in-out;
+ }
 button:focus {
     outline:0;
 }
@@ -101,6 +129,7 @@ button:focus {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
     margin: 8px;
 }
 #playPauseControls{
@@ -129,7 +158,7 @@ input[type=range].mainSlider:focus {
 }
 input[type=range].mainSlider::-webkit-slider-runnable-track {
   width: 100%;
-  height: 10px;
+  height: 15px;
   cursor: pointer;
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
   background: #521945;
@@ -139,8 +168,8 @@ input[type=range].mainSlider::-webkit-slider-runnable-track {
 input[type=range].mainSlider::-webkit-slider-thumb {
   box-shadow: 0px 0px 0px rgba(255, 0, 0, 0.49), 0px 0px 0px rgba(255, 26, 26, 0.49);
   border: 2.9px solid #8a4f7d;
-  height: 10px;
-  width: 20px;
+  height: 15px;
+  width: 25px;
   border-radius: 28px;
   background: #521945;
   cursor: pointer;
@@ -152,7 +181,7 @@ input[type=range].mainSlider:focus::-webkit-slider-runnable-track {
 }
 input[type=range].mainSlider::-moz-range-track {
   width: 100%;
-  height: 10px;
+  height: 15px;
   cursor: pointer;
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
   background: #521945;
@@ -162,15 +191,15 @@ input[type=range].mainSlider::-moz-range-track {
 input[type=range].mainSlider::-moz-range-thumb {
   box-shadow: 0px 0px 0px rgba(255, 0, 0, 0.49), 0px 0px 0px rgba(255, 26, 26, 0.49);
   border: 2.9px solid #8a4f7d;
-  height: 10px;
-  width: 20px;
+  height: 15px;
+  width: 25px;
   border-radius: 28px;
   background: #521945;
   cursor: pointer;
 }
 input[type=range].mainSlider::-ms-track {
   width: 100%;
-  height: 10px;
+  height: 15px;
   cursor: pointer;
   background: transparent;
   border-color: transparent;
@@ -191,7 +220,7 @@ input[type=range].mainSlider::-ms-fill-upper {
 input[type=range].mainSlider::-ms-thumb {
   box-shadow: 0px 0px 0px rgba(255, 0, 0, 0.49), 0px 0px 0px rgba(255, 26, 26, 0.49);
   border: 2.9px solid #8a4f7d;
-  width: 20px;
+  width: 25px;
   border-radius: 28px;
   background: #521945;
   cursor: pointer;
@@ -217,7 +246,7 @@ input[type=range].volSlider:focus {
 }
 input[type=range].volSlider::-webkit-slider-runnable-track {
   width: 100%;
-  height: 2px;
+  height: 5px;
   cursor: pointer;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
   background: #521945;
@@ -233,14 +262,14 @@ input[type=range].volSlider::-webkit-slider-thumb {
   background: #521945;
   cursor: pointer;
   -webkit-appearance: none;
-  margin-top: -4px;
+  margin-top: -2.5px;
 }
 input[type=range].volSlider:focus::-webkit-slider-runnable-track {
   background: #521945;
 }
 input[type=range].volSlider::-moz-range-track {
   width: 100%;
-  height: 2px;
+  height: 5px;
   cursor: pointer;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
   background: #521945;
@@ -258,7 +287,7 @@ input[type=range].volSlider::-moz-range-thumb {
 }
 input[type=range].volSlider::-ms-track {
   width: 100%;
-  height: 2px;
+  height: 5px;
   cursor: pointer;
   background: transparent;
   border-color: transparent;
