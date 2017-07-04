@@ -46,6 +46,7 @@ function calibrate(vid){
     document.querySelector("#volShow i").innerText = (vid.volume === 0) ? "volume_off" : "volume_up";
     vol.value = vid.volume * 100;
     currVol.innerText = parseInt(vid.volume * 100) + "%";
+    document.querySelector("#playPause i").innerText = (vid.paused) ?  "pause_circle_filled" : "play_circle_filled";
 }
 function placeContextMenu(){
     document.getElementById("conMenu").className = "show";
@@ -90,7 +91,9 @@ function init(){
 
     // Playlist
     var playlist = ["https://vt.media.tumblr.com/tumblr_osck2jVczm1uz56c3.mp4",
-                "https://vt.media.tumblr.com/tumblr_o2glssowzR1usg3as.mp4"];
+                    "https://vt.media.tumblr.com/tumblr_o2glssowzR1usg3as.mp4",
+                    "https://vt.media.tumblr.com/tumblr_oskke5N7jv1vnq1cr.mp4",
+                    "http://go-dl.eve-files.com/media/0906/test.mkv"];
 
     // Initial Actions.
     vid.style.left = 0;
@@ -122,7 +125,7 @@ function init(){
 
     // Play/Pause Button.
     btnPlay.addEventListener('click', function(){
-        document.querySelector("#playPause i").innerText = (vid.paused) ?  "pause_circle_filled" : "play_circle_filled";
+        calibrate(vid);
         (vid.paused) ? vid.play() : vid.pause();
     });
 
@@ -239,6 +242,10 @@ function init(){
     }
 
     document.addEventListener("click", function(event) {
-     document.getElementById("conMenu").className = "hide";
- });
+        document.getElementById("conMenu").className = "hide";
+    });
+    vid.addEventListener("click", function(){
+        calibrate(vid);
+        (vid.paused) ? vid.play() : vid.pause();
+    });
  }
