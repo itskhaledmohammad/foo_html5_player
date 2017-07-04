@@ -4,6 +4,7 @@
     font-family: 'Roboto';
     font-size: 24px;
 }
+
 .matIcons {
   font-family: 'Material Icons';
   font-weight: normal;
@@ -16,6 +17,13 @@
   word-wrap: normal;
   white-space: nowrap;
   direction: ltr;
+
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+  /* Rules below not implemented in browsers yet */
+  -o-user-select: none;
+  user-select: none;
 
   /* Support for all WebKit browsers. */
   -webkit-font-smoothing: antialiased;
@@ -73,14 +81,7 @@ header{
 button:focus {
     outline:0;
 }
-.material-icons{
-    -webkit-user-select: none; /* Chrome/Safari */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE10+ */
-    /* Rules below not implemented in browsers yet */
-    -o-user-select: none;
-    user-select: none;
-}
+
 #loopOrNot i{
     color: #8A4F7D;
 }
@@ -320,4 +321,45 @@ input[type=range].volSlider:focus::-ms-fill-lower {
 }
 input[type=range].volSlider:focus::-ms-fill-upper {
   background: #521945;
+}
+/* COntext menu */
+.show {
+    z-index:100;
+    position: absolute;
+    background-color:#f7faff;
+    border: 2px solid #4782e5;
+    padding: 2px;
+    display: block;
+    margin: 0;
+    list-style-type: none;
+    list-style: none;
+}
+
+.hide {
+    display: none;
+}
+
+.show ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 480px;
+    background-color: #f1f1f1;
+}
+
+.show li a {
+    display: block;
+    color: #4782e5;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.show li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.show li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
 }

@@ -1,4 +1,27 @@
 // Functions.
+function mouseX(evt) {
+ if (evt.pageX) {
+     return evt.pageX;
+ } else if (evt.clientX) {
+    return evt.clientX + (document.documentElement.scrollLeft ?
+        document.documentElement.scrollLeft :
+        document.body.scrollLeft);
+ } else {
+     return null;
+ }
+}
+
+function mouseY(evt) {
+ if (evt.pageY) {
+     return evt.pageY;
+ } else if (evt.clientY) {
+    return evt.clientY + (document.documentElement.scrollTop ?
+    document.documentElement.scrollTop :
+    document.body.scrollTop);
+ } else {
+     return null;
+ }
+}
 function getTotalTimeInHour(vid){
     return parseInt((vid.duration) / 3600);
 }
@@ -23,6 +46,11 @@ function calibrate(vid){
     document.querySelector("#volShow i").innerText = (vid.volume === 0) ? "volume_off" : "volume_up";
     vol.value = vid.volume * 100;
     currVol.innerText = parseInt(vid.volume * 100) + "%";
+}
+function placeContextMenu(){
+    document.getElementById("conMenu").className = "show";
+    document.getElementById("conMenu").style.top =  mouseY(event) + 'px';
+    document.getElementById("conMenu").style.left = mouseX(event) + 'px';
 }
 
 function init(){
@@ -198,4 +226,19 @@ function init(){
         document.querySelector('#loopOrNot i').style.color = (vid.loop == true) ? "#8A4F7D" : "white";
     }, false);
 
-}
+    if (document.addEventListener) {
+        document.addEventListener('contextmenu', function(e) {
+            placeContextMenu();
+            e.preventDefault();
+        }, false);
+    } else {
+        document.attachEvent('oncontextmenu', function() {
+            placeContextMenu();
+            window.event.returnValue = false;
+        });
+    }
+
+    document.addEventListener("click", function(event) {
+     document.getElementById("conMenu").className = "hide";
+ });
+ }
