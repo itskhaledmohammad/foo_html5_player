@@ -148,6 +148,18 @@ button:focus {
     justify-content: flex-end;
 }
 
+#urlBox{
+    padding: 0 18px 10px 18px;
+    display: flex;
+    align-items: center;
+    color: #4782e5;
+}
+#urlBox .matIcons{
+    color: red;
+}
+#urlBox input{
+    margin: 0 10px;
+}
 /* Range CSS */
 input[type=range].mainSlider {
   -webkit-appearance: none;
@@ -322,6 +334,8 @@ input[type=range].volSlider:focus::-ms-fill-lower {
 input[type=range].volSlider:focus::-ms-fill-upper {
   background: #521945;
 }
+
+
 /* COntext menu */
 .show {
     z-index:100;
