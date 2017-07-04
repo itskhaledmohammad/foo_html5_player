@@ -103,23 +103,32 @@ function init(){
     lastVol = (vid.volume === 1) ? 0 : 1;
     calibrate(vid);
 
-    // Video Events.
-    vid.addEventListener('progress', function(){
-        loadStatus.innerText = "Load Status: " + parseInt(((vid.buffered.end(0) / vid.duration)* 100)) + "%";
-    }, false);
+    /* Video Events. */
+
+    // Get Total Time.
     vid.addEventListener('loadeddata', function(){
         durationTime.innerText = getTotalTimeInHour(vid) + ":" + getTotalTimeInMin(vid) + ":" + getTotaltimeInSec(vid);
     });
+
+    // Current Time Update.
     vid.addEventListener('timeupdate', function(){
         currTime.innerText = getTimePassedInHour(vid) + ":" + getTimePassedInMin(vid) + ":" + getTimePassedInSec(vid);
         slide.value = (vid.currentTime === 0) ? 0 : ((vid.currentTime) / vid.duration) * 100;
     });
+
+    // Play the next video. 
     vid.addEventListener('ended', function(){
         if(!loopOrNot.checked){
             currentItem++;
             vid.src = playlist[currentItem % playlist.length];
             calibrate(vid);
         }
+    });
+
+    // Clicking on the video.
+    vid.addEventListener("click", function(){
+        calibrate(vid);
+        (vid.paused) ? vid.play() : vid.pause();
     });
 
 
@@ -229,6 +238,7 @@ function init(){
         document.querySelector('#loopOrNot i').style.color = (vid.loop == true) ? "#8A4F7D" : "white";
     }, false);
 
+    // Context Menu.
     if (document.addEventListener) {
         document.addEventListener('contextmenu', function(e) {
             placeContextMenu();
@@ -243,9 +253,5 @@ function init(){
 
     document.addEventListener("click", function(event) {
         document.getElementById("conMenu").className = "hide";
-    });
-    vid.addEventListener("click", function(){
-        calibrate(vid);
-        (vid.paused) ? vid.play() : vid.pause();
     });
  }
