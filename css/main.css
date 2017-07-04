@@ -159,6 +159,7 @@ button:focus {
 }
 #urlBox input{
     margin: 0 10px;
+    width: 100%;
 }
 /* Range CSS */
 input[type=range].mainSlider {

@@ -1,16 +1,17 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Video Player</title>
+        <title>Foo HTML5 Player</title>
         <link rel="stylesheet" href="./css/main.css">
         <script type="text/javascript" src="./js/main.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Roboto" rel="stylesheet">
     </head>
     <body onload="init();">
         <div id="wrapper">
             <header>
-                <video id ="vid" autoplay loop preload="auto" poster>
+                <video id ="vid" autoplay preload="auto" poster>
                     <source src="https://vt.media.tumblr.com/tumblr_os685vybSY1vt68ub_480.mp4" type="video/mp4" />
                 </video>
             </header>
@@ -57,7 +58,7 @@
                 <li><a href="https://github.com/itskhaledmohammad/foo_html5_player" target="_blank">View on Github <i class="fa fa-github" style="color: black;" aria-hidden="true"></i></a></li>
                 <li><a href="https://twitter.com/itskhaledmd" target="_blank">Follow on Twitter <i class="fa fa-twitter" aria-hidden="true" style="color: #3B5998;"></i></a></li>
                 <li><a href="https://www.facebook.com/itskhaledmohammad" target="_blank">Made With Love by Khaled Mohammad <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i></a></li>
-                <div id="urlBox"><label for="vidUrl">URL: </label><input type="text" name="vidUrl" id="vidUrl"><button><i class="matIcons">done</i></button></div>
+                <div id="urlBox"><label for="vidUrl">URL: </label><input type="text" name="vidUrl" id="vidUrl"><button id="btnLoadUrl"><i class="matIcons">done</i></button></div>
            </ul>
         </nav>
        </div>

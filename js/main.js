@@ -47,6 +47,8 @@ function calibrate(vid){
     vol.value = vid.volume * 100;
     currVol.innerText = parseInt(vid.volume * 100) + "%";
     document.querySelector("#playPause i").innerText = (vid.paused) ?  "pause_circle_filled" : "play_circle_filled";
+    document.querySelector("#urlBox input").value = vid.src;
+    vidUrl.value = vid.src;
 }
 function placeContextMenu(){
     document.getElementById("conMenu").className = "show";
@@ -80,6 +82,9 @@ function init(){
     var zoomPanelSwitch = document.querySelector('#zoomPanelSwitch');
     var volShow = document.querySelector('#volShow');
     var zoomControlsDisp = zoomControls.style;
+    var btnLoadUrl = document.querySelector("#btnLoadUrl");
+    var vidUrl = document.querySelector("#vidUrl");
+
 
     // Variables
     var zoom = 1;
@@ -116,7 +121,7 @@ function init(){
         slide.value = (vid.currentTime === 0) ? 0 : ((vid.currentTime) / vid.duration) * 100;
     });
 
-    // Play the next video. 
+    // Play the next video.
     vid.addEventListener('ended', function(){
         if(!loopOrNot.checked){
             currentItem++;
@@ -253,5 +258,11 @@ function init(){
 
     document.addEventListener("click", function(event) {
         document.getElementById("conMenu").className = "hide";
+    });
+
+    // Context Menu Load Url.
+    btnLoadUrl.addEventListener('click', function(){
+        vid.src = vidUrl.value;
+        calibrate(vid);
     });
  }
